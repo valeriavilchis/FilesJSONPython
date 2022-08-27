@@ -7,14 +7,11 @@ list_content_jsons = os.listdir(parent_dir_int)
 
 for file_json in list_content_jsons:
     dir_file = parent_dir_int+"/"+file_json
-    
     with open(dir_file) as content:
         data_json = json.load(content)
-        data_order = data_json['order']
-        
+        data_order = data_json['keyPrincipal']
         for dict_treat in data_order:
-            del dict_treat['debit_entity']
-    
+            del dict_treat['key']
         json_output = json.dumps(data_json)
         file_output = parent_dir_out + file_json
         if not os.path.exists(parent_dir_out):
